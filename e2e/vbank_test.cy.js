@@ -1,0 +1,72 @@
+describe('visit vfd', () => {
+        it('should test for valid username and valid password', () => {
+            //this test is to test for valid username
+            cy.visit('https://veelage.vbank.ng')
+            cy.location('protocol').should('eq', 'https:')
+            cy.get('#email').type('klasicbrownie@gmail.com')
+            cy.get('#password').type('michael007')
+            cy.get('.bg-gradient').click()
+            cy.contains('Welcome')
+        })
+     
+        it('should test for valid username and invalid password', () => {
+            //cy.title().should('eq', 'Verve Access')
+            cy.visit('https://veelage.vbank.ng')
+            cy.get('#email').type('klasicbrownie@gmail.com')
+            cy.get('#password').type('michael00007')
+            cy.get('.bg-gradient').click()
+            cy.contains('Invalid email or password')
+       })
+     
+        it('should test for invalid username and valid password', () => {
+            //cy.title().should('eq', 'Verve Access')
+            cy.visit('https://veelage.vbank.ng')
+            cy.get('#email').type('klasicbrownieeegmailcom')
+            cy.get('#password').type('michael0007')
+            cy.get('.bg-gradient').click()
+           // cy.find('please include an  in the email address   is missing an')
+        })
+    
+     
+        it('should test for wrong username and valid password', () => {
+            //cy.title().should('eq', 'Verve Access')
+            cy.visit('https://veelage.vbank.ng')
+            cy.get('#email').type('klasicbrownieee@gmail.com')
+            cy.get('#password').type('michael0007')
+            cy.get('.bg-gradient').click()
+            cy.contains('Email address not found')
+        })
+    
+    
+     
+        it('should test for valid username and invalid password', () => {
+            //cy.title().should('eq', 'Verve Access')
+            cy.visit('https://veelage.vbank.ng')
+            cy.get('#email').type('klasicbrownie@gmail.com')
+            cy.get('#password').type('michael0000777')
+            cy.get('.bg-gradient').click()
+            cy.contains('Invalid email or password')
+        })
+    
+     
+        it('should test for invalid username and valid password', () => {
+            //cy.title().should('eq', 'Verve Access')
+            cy.visit('https://veelage.vbank.ng')
+            cy.get('#email').type(' ')
+            cy.get('#password').type(' ')
+            cy.get('.bg-gradient').click()
+           // cy.find({force:true}, 'Please fill in this field.')
+        })
+
+        it('should test for overview page', () => {
+              //this test is to test for valid username
+              cy.visit('https://veelage.vbank.ng')
+              cy.location('protocol').should('eq', 'https:')
+              cy.get('#email').type('klasicbrownie@gmail.com')
+              cy.get('#password').type('michael007')
+              cy.get('.bg-gradient').click()
+              cy.get(':nth-child(2) > ul > :nth-child(1) > .flex > :nth-child(2)').click
+          })
+
+
+    })
